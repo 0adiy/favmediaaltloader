@@ -54,9 +54,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [searchQuery, setSearchQuery] = React.useState("");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -93,7 +92,13 @@ export default function Header() {
               }}
             >
               {navItems.map((item) => (
-                <MenuItem key={item} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={item}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    props.setMediaType(item);
+                  }}
+                >
                   <Typography textAlign="center">{item}</Typography>
                 </MenuItem>
               ))}
@@ -101,7 +106,14 @@ export default function Header() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item) => (
-              <Button key={item} onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+              <Button
+                key={item}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  props.setMediaType(item);
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
                 {item}
               </Button>
             ))}
@@ -114,7 +126,7 @@ export default function Header() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
               onChange={(e) => {
-                setSearchQuery(e.target.value);
+                props.setSearchQuery(e.target.value);
               }}
             />
           </Search>
