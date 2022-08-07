@@ -1,7 +1,7 @@
-import Header from "./Components/header.js";
+import Header from "./components/header.js";
 import "./App.css";
 import { useState } from "react";
-import MasonryImageList from "./Components/imagelist.js";
+import MasonryImageList from "./components/imagelist.js";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
