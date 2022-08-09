@@ -96,7 +96,7 @@ export default function Header(props) {
                   key={item}
                   onClick={() => {
                     handleCloseNavMenu();
-                    props.setMediaType(item);
+                    props.changeMedia(item);
                   }}
                 >
                   <Typography textAlign="center">{item}</Typography>
@@ -110,7 +110,7 @@ export default function Header(props) {
                 key={item}
                 onClick={() => {
                   handleCloseNavMenu();
-                  props.setMediaType(item);
+                  props.changeMedia(item);
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
@@ -126,7 +126,7 @@ export default function Header(props) {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
               onChange={(e) => {
-                props.setSearchQuery(e.target.value);
+                props.search(e.target.value);
               }}
             />
           </Search>
