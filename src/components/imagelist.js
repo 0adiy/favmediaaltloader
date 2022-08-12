@@ -2,18 +2,17 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { MCard, VCard } from "./mcard";
 
 export default function MasonryImageList(props) {
   const itemData = props.mediaData;
 
   return (
-    <Box sx={{ width: 1, height: 1 }}>
+    <Box sx={{ width: 1, height: 1, mt: 0 }}>
       {itemData.length && (
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList variant="masonry" cols={4} gap={8}>
           {itemData.map((item) => (
-            <ImageListItem key={item.img}>
-              <img src={`${item.url}?w=248&fit=crop&auto=format`} srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={item.name} loading="lazy" />
-            </ImageListItem>
+            <ImageListItem key={item.img}>{props.mediaType === "Image" ? <MCard url={item.url} name={item.name} /> : <VCard url={item.url} name={item.name} />}</ImageListItem>
           ))}
         </ImageList>
       )}
