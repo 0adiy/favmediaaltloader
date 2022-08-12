@@ -14,7 +14,7 @@ export function MCard(props) {
       </CardContent>
       <CardActions>
         <Tooltip title="Copy Image Link" arrow>
-          <IconButton color="primary" aria-label="Copy Image Link">
+          <IconButton color="primary" aria-label="Copy Image Link" onClick={() => navigator.clipboard.writeText(props.url)}>
             <ContentCopyIcon />
           </IconButton>
         </Tooltip>
